@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Stamps</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+
+        main {
+            margin: 20px 0;
+        }
+
+        section {
+            margin-bottom: 20px;
+            text-align: center; /* 텍스트 가운데 정렬을 위해 추가 */
+        }
+
+        .stamp-image {
+            display: block;
+            margin: 0 auto; /* 이미지를 가운데 정렬을 위해 추가 */
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>웅크스코어</h1>
+    </header>
+
+    <main>
+           
+        <section>
+            
+            <img src="{{ url_for('static', filename='road.png') }}" alt="Stamp Image" class="stamp-image">
+            
+            <h2>내가 모은 스탬프</h2>
+            {% if user_stamps %}
+                <ul>
+                    {% for location_id in user_stamps %}
+                        <li>{{ locations[location_id]['name'] }}</li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p>아직 모은 스탬프가 없습니다. 스탬프 모으기를 시작해보세요!</p>
+            {% endif %}
+        </section>
+    </main>
+</body>
+</html>
